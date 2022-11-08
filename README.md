@@ -6,7 +6,7 @@
 
 - Data Science
   - 박은지 O
-  - 주경배
+  - 주경배 O
   - 정찬영
 - Data Engineering
   - 이원근
