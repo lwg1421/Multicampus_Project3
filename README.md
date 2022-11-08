@@ -11,4 +11,4 @@
 - Data Engineering
   - 이원근
   - 최인태 ㅇ
-  - 박창훈
+  - 박창훈 O
