@@ -4,7 +4,7 @@
 
 ### 조원
 - Data Science
-  - 박은지
+  - 박은지 O
   - 주경배
   - 정찬영
 - Data Engineering
