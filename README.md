@@ -7,7 +7,7 @@
 - Data Science
   - 박은지 O
   - 주경배 O
-  - 정찬영
+  - 정찬영 O
 - Data Engineering
   - 이원근
   - 최인태 ㅇ
