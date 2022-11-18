@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_5bd48b3e944e14a0a34e48392561d449 {
+                    position: relative;
+                    width: 750.0px;
+                    height: 500.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_5bd48b3e944e14a0a34e48392561d449" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_5bd48b3e944e14a0a34e48392561d449 = L.map(
+                "map_5bd48b3e944e14a0a34e48392561d449",
+                {
+                    center: [37.559819, 126.963895],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 11,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_6f6bec4a3117046cab499598da1afc72 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_5bd48b3e944e14a0a34e48392561d449);
+        
+    
+            var marker_c2b1cd571c2d7c2fec806baf52643bd0 = L.marker(
+                [37.6080757, 127.0288683],
+                {}
+            ).addTo(map_5bd48b3e944e14a0a34e48392561d449);
+        
+    
+            var icon_320d30a44d295a19952e1e5a4671ad74 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "star", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_c2b1cd571c2d7c2fec806baf52643bd0.setIcon(icon_320d30a44d295a19952e1e5a4671ad74);
+        
+    
+        var popup_3492376cc5e50ecbfa4896acb9ba6b71 = L.popup({"maxWidth": 500, "minWidth": 300});
+
+        
+            
+                var i_frame_ed57790a512206811cb75aa3a403eebe = $(`<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;charset=utf-8;base64,CiAgICA8aDM+7ZiE64yA67Cx7ZmU7KCQIOuvuOyVhOygkDxicj48aDU+PGI+7KeA7KCQ7Jew65297LKYPC9iPiA6IOuvuOuTseuhnTxicj48Yj7rj4TroZzrqoXso7zshow8L2I+IDog7ISc7Jq47Yq567OE7IucIOyEseu2geq1rCDrj5nshozrrLjroZwgMzE1IO2YhOuMgOuwse2ZlOygkOuvuOyVhOygkA==" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;"></iframe></div></div>`)[0];
+                popup_3492376cc5e50ecbfa4896acb9ba6b71.setContent(i_frame_ed57790a512206811cb75aa3a403eebe);
+            
+        
+
+        marker_c2b1cd571c2d7c2fec806baf52643bd0.bindPopup(popup_3492376cc5e50ecbfa4896acb9ba6b71)
+        ;
+
+        
+    
+    
+            marker_c2b1cd571c2d7c2fec806baf52643bd0.bindTooltip(
+                `<div>
+                     현대백화점 미아점
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>

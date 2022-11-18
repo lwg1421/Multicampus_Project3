@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a06e8c69a4e1cd46985bc3eb025f2fbd {
+                    position: relative;
+                    width: 750.0px;
+                    height: 500.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_a06e8c69a4e1cd46985bc3eb025f2fbd" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a06e8c69a4e1cd46985bc3eb025f2fbd = L.map(
+                "map_a06e8c69a4e1cd46985bc3eb025f2fbd",
+                {
+                    center: [37.559819, 126.963895],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 11,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d15b59cfa54bd2960e4804d94721e3fa = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_a06e8c69a4e1cd46985bc3eb025f2fbd);
+        
+    
+            var marker_9bcddf413d71ec94fa37965b45f8dc58 = L.marker(
+                [37.565784, 126.938572],
+                {}
+            ).addTo(map_a06e8c69a4e1cd46985bc3eb025f2fbd);
+        
+    
+            var icon_b19a59fffdbf84213134bc193a971856 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "star", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_9bcddf413d71ec94fa37965b45f8dc58.setIcon(icon_b19a59fffdbf84213134bc193a971856);
+        
+    
+        var popup_fd6b5051a29daac5d6b40f9a3ea7c5e0 = L.popup({"maxWidth": 500, "minWidth": 300});
+
+        
+            
+                var i_frame_b0de747e7bc4c29810bc53aab8c5dc17 = $(`<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;charset=utf-8;base64,CiAgICA8aDM+7Jew7IS464yAU0vqta3soJztlZnsgqzsoJA8YnI+PGg1PjxiPuyngOygkOyXsOudveyymDwvYj4gOiAtPGJyPjxiPuuPhOuhnOuqheyjvOyGjDwvYj4gOiDshJzsmrgg7ISc64yA66y46rWsIOyXsOyEuOuhnCA1MCDsl7DshLjrjIDtlZnqtZAg7Iug7LSM7Lqg7Y287IqkIFNL6rWt7KCc7ZWZ7IKsLCBCMuy4tQ==" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;"></iframe></div></div>`)[0];
+                popup_fd6b5051a29daac5d6b40f9a3ea7c5e0.setContent(i_frame_b0de747e7bc4c29810bc53aab8c5dc17);
+            
+        
+
+        marker_9bcddf413d71ec94fa37965b45f8dc58.bindPopup(popup_fd6b5051a29daac5d6b40f9a3ea7c5e0)
+        ;
+
+        
+    
+    
+            marker_9bcddf413d71ec94fa37965b45f8dc58.bindTooltip(
+                `<div>
+                     연세대SK국제학사점
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>

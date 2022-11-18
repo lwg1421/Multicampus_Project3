@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_9858b7e0bef0fa2d59dcd533a4e10e2a {
+                    position: relative;
+                    width: 750.0px;
+                    height: 500.0px;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_9858b7e0bef0fa2d59dcd533a4e10e2a" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_9858b7e0bef0fa2d59dcd533a4e10e2a = L.map(
+                "map_9858b7e0bef0fa2d59dcd533a4e10e2a",
+                {
+                    center: [37.559819, 126.963895],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 11,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_2803d1d91394c28afa2c0fbe8c5a5d42 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_9858b7e0bef0fa2d59dcd533a4e10e2a);
+        
+    
+            var marker_ae5e1eb5b16e9f0068a4be5aebe0ac12 = L.marker(
+                [37.5437995, 127.0539096],
+                {}
+            ).addTo(map_9858b7e0bef0fa2d59dcd533a4e10e2a);
+        
+    
+            var icon_a8e6b200b5829c5ed3ef50231b81b917 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "star", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_ae5e1eb5b16e9f0068a4be5aebe0ac12.setIcon(icon_a8e6b200b5829c5ed3ef50231b81b917);
+        
+    
+        var popup_626ef11d98a7047124b8741c579e5c5a = L.popup({"maxWidth": 500, "minWidth": 300});
+
+        
+            
+                var i_frame_0737bba507a115c7d63331b71f0560c6 = $(`<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;charset=utf-8;base64,CiAgICA8aDM+7ISx7IiY7Jet7KCQPGJyPjxoNT48Yj7sp4DsoJDsl7Drnb3sspg8L2I+IDogMDcwLTQ4NDgtMDE2NTxicj48Yj7rj4TroZzrqoXso7zshow8L2I+IDog7ISc7Jq47Yq567OE7IucIOyEseuPmeq1rCDshLHsiJjrj5kgMuqwgCAzMTQtMTMsIDHsuLUgMTEy7Zi4" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;"></iframe></div></div>`)[0];
+                popup_626ef11d98a7047124b8741c579e5c5a.setContent(i_frame_0737bba507a115c7d63331b71f0560c6);
+            
+        
+
+        marker_ae5e1eb5b16e9f0068a4be5aebe0ac12.bindPopup(popup_626ef11d98a7047124b8741c579e5c5a)
+        ;
+
+        
+    
+    
+            marker_ae5e1eb5b16e9f0068a4be5aebe0ac12.bindTooltip(
+                `<div>
+                     성수역점
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
