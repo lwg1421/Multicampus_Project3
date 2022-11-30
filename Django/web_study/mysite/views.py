@@ -3,8 +3,12 @@ from mysite.models import Question, Post
 from django.utils import timezone
 from django.db import connection
 
-
-
+import tensorflow
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras import models, layers
+from tensorflow.keras.models import load_model
+import cv2
+import numpy as np
 
 
 def index(request):
@@ -107,13 +111,47 @@ def food_list(request):
                 'contents' : data[2],
                 'mainphoto' : data[3]
             }
-            arr.append(row)         
+            arr.append(row)  
+
+        ptlink = arr[-1]["mainphoto"]
+
+        model = load_model('C:/multi_project_3/Django/web_study/VGG16_BatchNor.h5') # 모델명
+        
+        roi = cv2.imread('media/{}'.format(ptlink)) # 파일 경로
+        #roi = cv2.imread('media/{}'.format(arr[-1].mainphoto)) # 파일 경로
+
+        w, h = 250, 250
+        roi = cv2.resize(roi, (w,h), interpolation = cv2.INTER_AREA)
+        roi = roi.astype('float') / 255.0
+        # roi = img_to_array(roi)
+        roi = np.expand_dims(roi, axis=0)
+        # img = img.reshape(1,w,h,3)
+
+        Prediction = model.predict(roi)
+
+        #Prediction[0]   #감정별 백분율 (화남 0, 기쁨 1, 중립 2, 슬픔3)
+
+        percent = Prediction[0][np.argmax(Prediction)]
+
+        result = np.argmax(Prediction)#백분율이 제일 높은 값
+        if result == 1:
+            a = '기쁨'
+        elif result == 0:
+            a = '화남'
+        elif result == 3:
+            a = '슬픔'
+        else:
+            a = '몰라'
+
+
 
     except:
         connection.rollback()
         print("Failed selecting in DB")
 
-    return render(request, 'mysite/food_list.html', {'arr':arr[-1]})
+    return render(request, 'mysite/food_list.html', {'arr':arr[-1],'percent':percent,'a':a})
+
+
 
 
 def agree(request):
@@ -121,3 +159,63 @@ def agree(request):
 
 def map(request):
     return render(request,'mysite/map.html')
+
+
+
+def predict_model(request):
+    model = load_model('C:/multi_project_3/Django/web_study/VGG16_BatchNor.h5') # 모델명
+
+    roi = cv2.imread('C:/image/KakaoTalk_20221129_165040387.png') # 파일 경로
+
+    w, h = 250, 250
+    roi = cv2.resize(roi, (w,h), interpolation = cv2.INTER_AREA)
+    roi = roi.astype('float') / 255.0
+    # roi = img_to_array(roi)
+    roi = np.expand_dims(roi, axis=0)
+    # img = img.reshape(1,w,h,3)
+
+    Prediction = model.predict(roi)
+
+    Prediction[0]   #감정별 백분율 (화남 0, 기쁨 1, 중립 2, 슬픔3)
+
+    result = np.argmax(Prediction)#백분율이 제일 높은 값
+    if result == 1:
+        a = '기쁨'
+    elif result == 0:
+        a = '화남'
+    elif result == 3:
+        a = '슬픔'
+    else:
+        a = '몰라'
+    
+    return render(request, 'mysite/emotion.html', {'a':a})
+
+
+
+def model():
+    model = load_model('C:/multi_project_3/Django/web_study/VGG16_BatchNor.h5') # 모델명
+
+    roi = cv2.imread('C:/image/KakaoTalk_20221129_165040387.png') # 파일 경로
+
+    w, h = 250, 250
+    roi = cv2.resize(roi, (w,h), interpolation = cv2.INTER_AREA)
+    roi = roi.astype('float') / 255.0
+    # roi = img_to_array(roi)
+    roi = np.expand_dims(roi, axis=0)
+    # img = img.reshape(1,w,h,3)
+
+    Prediction = model.predict(roi)
+
+    Prediction[0]   #감정별 백분율 (화남 0, 기쁨 1, 중립 2, 슬픔3)
+
+    result = np.argmax(Prediction)#백분율이 제일 높은 값
+    if result == 1:
+        a = '기쁨'
+    elif result == 0:
+        a = '화남'
+    elif result == 3:
+        a = '슬픔'
+    else:
+        a = '몰라'
+
+
