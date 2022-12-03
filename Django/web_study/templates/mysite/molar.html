@@ -1,0 +1,9 @@
+<h1>감정을 읽을 수 없어요</h1><p>
+<h2>현재 감정을 선택해주세요.</h2>
+</p>
+<form action="{% url 'mysite:food_list1' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<input type="submit" name="angry" value="화남">
+<input type="submit" name="happy" value="기쁨">
+<input type="submit" name="sad" value="슬픔"></form>
+{{a}}

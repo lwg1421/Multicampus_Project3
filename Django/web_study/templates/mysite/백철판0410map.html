@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <script>
+        L_NO_TOUCH = false;
+        L_DISABLE_3D = false;
+    </script>
+
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <style>
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css" />
+
+    <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        #map_4e4c2f275d27c1f6f552368b03ff8581 {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            left: 0.0%;
+            top: 0.0%;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="folium-map" id="map_4e4c2f275d27c1f6f552368b03ff8581"></div>
+
+</body>
+<script>
+
+
+    var map_4e4c2f275d27c1f6f552368b03ff8581 = L.map(
+        "map_4e4c2f275d27c1f6f552368b03ff8581",
+        {
+            center: [37.559819, 126.963895],
+            crs: L.CRS.EPSG3857,
+            zoom: 11,
+            zoomControl: true,
+            preferCanvas: false,
+        }
+    );
+
+
+
+
+
+    var tile_layer_749e420160c1416e6a588dfe46f7e7ba = L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        { "attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false }
+    ).addTo(map_4e4c2f275d27c1f6f552368b03ff8581);
+
+
+    var marker_bb9c4c5af23aa119297425d9c7767252 = L.marker(
+        [37.5130282, 126.944421],
+        {}
+    ).addTo(map_4e4c2f275d27c1f6f552368b03ff8581);
+
+
+    var icon_3d2b4bd018b134d675b4e9c4bc8b6439 = L.AwesomeMarkers.icon(
+        { "extraClasses": "fa-rotate-0", "icon": "star", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon" }
+    );
+    marker_bb9c4c5af23aa119297425d9c7767252.setIcon(icon_3d2b4bd018b134d675b4e9c4bc8b6439);
+
+
+    var popup_bfba42ea48ab4815f6f0adb366dc561b = L.popup({ "maxHeight": 1000, "maxWidth": 1500, "minHeight": 700, "minWidth": 400, "src": "https://theborndb.theborn.co.kr/wp-content/uploads/20170825_085425.jpg" });
+
+
+
+    var i_frame_19ca1d51199cd80b13e84eb0048a9fa2 = $(`<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;charset=utf-8;base64,CiAgICA8aDI+67Cx7LKg7YyQMDQxMCDrhbjrn4nsp4Tsl63soJA8YnI+PGg0PjxiPuyghO2ZlOuyiO2YuDwvYj4gOiAwMi04MjUtMzMyNzxicj48YnI+PGI+7KeA7KCQ7KO87IaMPC9iPiA6IOyEnOyauOyLnCDrj5nsnpHqtawg66eM7JaR66GcIDEwOCwgMuy4tTxicj48YnI+PGI+7JiB7JeF7Iuc6rCEPC9iPiA6IDExOjAwIH4gMjM6MDAgPGJyPjxicj48aW1nIHNyYyA9ICdodHRwczovL3RoZWJvcm5kYi50aGVib3JuLmNvLmtyL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDE3MDgyNV8wODU0MjUuanBnJ3dpZHRoPSczMDAnIGhlaWdodD0nMjAwJz4=" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;"></iframe></div></div>`)[0];
+    popup_bfba42ea48ab4815f6f0adb366dc561b.setContent(i_frame_19ca1d51199cd80b13e84eb0048a9fa2);
+
+
+
+    marker_bb9c4c5af23aa119297425d9c7767252.bindPopup(popup_bfba42ea48ab4815f6f0adb366dc561b)
+        ;
+
+
+
+
+    marker_bb9c4c5af23aa119297425d9c7767252.bindTooltip(
+        `<div>
+                     노량진역점
+                 </div>`,
+        { "sticky": true }
+    );
+
+
+    var marker_cf9aaea56ed880e053cd0625247bb93d = L.marker(
+        [37.5409158, 127.0698537],
+        {}
+    ).addTo(map_4e4c2f275d27c1f6f552368b03ff8581);
+
+
+    var icon_0bf93843d7f053bf6228ccbcf66840d0 = L.AwesomeMarkers.icon(
+        { "extraClasses": "fa-rotate-0", "icon": "star", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon" }
+    );
+    marker_cf9aaea56ed880e053cd0625247bb93d.setIcon(icon_0bf93843d7f053bf6228ccbcf66840d0);
+
+
+    var popup_02ba842418f84bd1f7ebd24d5112936e = L.popup({ "maxHeight": 1000, "maxWidth": 1500, "minHeight": 700, "minWidth": 400, "src": "https://theborndb.theborn.co.kr/wp-content/uploads/20210415_062407.png" });
+
+
+
+    var i_frame_7d59391b947e93544153669ed00909be = $(`<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;charset=utf-8;base64,CiAgICA8aDI+67Cx7LKg7YyQMDQxMCDqsbTrjIDsl63soJA8YnI+PGg0PjxiPuyghO2ZlOuyiO2YuDwvYj4gOiAwMi00OTktMDQxMDxicj48YnI+PGI+7KeA7KCQ7KO87IaMPC9iPiA6IOyEnOyauOyLnCDqtJHsp4Tqtawg64+Z7J2866GcIDIy6ri4IDEwNSwg7KeA7ZWYMey4tTxicj48YnI+PGI+7JiB7JeF7Iuc6rCEPC9iPiA6IDExOjMwIH4gMjI6MDAgPGJyPjxicj48aW1nIHNyYyA9ICdodHRwczovL3RoZWJvcm5kYi50aGVib3JuLmNvLmtyL3dwLWNvbnRlbnQvdXBsb2Fkcy8yMDIxMDQxNV8wNjI0MDcucG5nJ3dpZHRoPSczMDAnIGhlaWdodD0nMjAwJz4=" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;"></iframe></div></div>`)[0];
+    popup_02ba842418f84bd1f7ebd24d5112936e.setContent(i_frame_7d59391b947e93544153669ed00909be);
+
+
+
+    marker_cf9aaea56ed880e053cd0625247bb93d.bindPopup(popup_02ba842418f84bd1f7ebd24d5112936e)
+        ;
+
+
+
+
+    marker_cf9aaea56ed880e053cd0625247bb93d.bindTooltip(
+        `<div>
+                     건대역점
+                 </div>`,
+        { "sticky": true }
+    );
+
+</script>
+
+</html>
