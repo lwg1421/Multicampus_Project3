@@ -1,26 +1,26 @@
 <!-- <img src="/media/{{ arr.mainphoto }}" alt="" height="600"><br>
-당신은{{percent}}확률로 {{a}} 감정입니다.
+당신은 현재 {{a1}} 입니다.
 <br>
 <h1> 추천 메뉴</h1>
-{{ptlink}}<br>
-{{arr2}}
+{{final}}
 <p>
-  {{restaurant1}} : <a href="{% url 'mysite:map' %}">{{menu1}} </a><br>
+    {{restaurant1}} : <a href="{% url 'mysite:map' %}">{{menu1}} </a><br>
 <p>
-  {{restaurant2}} : <a href="{% url 'mysite:map' %}">{{menu2}} </a></p>
+    {{restaurant2}} : <a href="{% url 'mysite:map' %}">{{menu2}} </a></p>
 <p>
-  {{restaurant3}} : <a href="{% url 'mysite:map' %}">{{menu3}} </a></p>
-<p> 
-  {{restaurant4}} : <a href="{% url 'mysite:map' %}">{{menu4}} </a></p>
+    {{restaurant3}} : <a href="{% url 'mysite:map' %}">{{menu3}} </a></p>
 <p>
-  {{restaurant5}} : <a href="{% url 'mysite:map' %}">{{menu5}} </a></p> -->
+    {{restaurant4}} : <a href="{% url 'mysite:map' %}">{{menu4}} </a></p>
+<p>
+    {{restaurant5}} : <a href="{% url 'mysite:map' %}">{{menu5}} </a></p> -->
+
 <img src="/media/{{ arr.mainphoto }}" alt="" height="600"><br>
 
 당신은{{percent}}%확률로 {{a}} 감정입니다.<br>
 <hr />
 
 <hr />
-당신의 감정과 현재의 계절 {{season}}, 오늘의 날씨 {{b}}를 고려했을때 <br>
+당신의 감정과 현재의 계절 {{c}}, 오늘의 날씨 {{b}}를 고려했을때 <br>
 {% for f, d, e in folist %}
 
 {{ f }}순위로 {{ d }} 메뉴를 추천드리며 , 구매하실 수 있는 음식점은
@@ -83,7 +83,7 @@
 
 <br>{{ptlink}}
 <p>
-  <a href="{% url 'mysite:map' %}">음식점map</a>
-  <a href="{% url 'mysite:food_list' %}">이전페이지</a>
-  <a href="{% url 'mysite:blog' %}">처음으로</a>
-  <!-- <a href="{% url 'mysite:map' %}">짬뽕</a> -->
+    <a href="{% url 'mysite:map' %}">음식점map</a>
+    <a href="{% url 'mysite:food_list' %}">이전페이지</a>
+    <a href="{% url 'mysite:blog' %}">처음으로</a>
+    <!-- <a href="{% url 'mysite:map' %}">짬뽕</a> -->
