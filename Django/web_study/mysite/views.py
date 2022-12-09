@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from mysite.models import Question, Post, MenuScoreAll
+from mysite.models import Question, Post, resultall
 from django.utils import timezone
 from django.db import connection
+from django.urls import reverse
+from django.views.generic import DeleteView
 import pymysql
 import random
 
@@ -22,6 +24,20 @@ import pandas as pd
 # 계절
 import datetime
 
+import glob
+from PIL import Image
+
+import os
+
+count = 0
+rec_count = 0
+def base1(request):
+    global count
+    count = count + 1
+    return render(request, 'mysite/base1.html', {"rec_count":rec_count, "count":count})
+
+def blog1(request):
+    return render(request, 'mysite/blog1.html')
 
 def weather(request):
     html = requests.get('https://weather.naver.com/today/09680630?cpName=KMA')
@@ -31,70 +47,73 @@ def weather(request):
 
     return render(request, 'mysite/weather.html', {'a':a})
 
-def index(request):
-    question_list = Question.objects.order_by('-create_date')
-    context = {'question_list': question_list}
-    return render(request, 'mysite/question_list.html', context)
-
-
-def detail(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    context = {'question': question}
-    return render(request, 'mysite/question_detail.html', context)
-
-
-def answer_create(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    question.answer_set.create(content=request.POST.get('content'), create_date=timezone.now())
-    return redirect('mysite:detail', question_id=question.id)
-
-
-# Create your views here.
+# # Create your views here.
 def index(request):
     return render(request,'mysite/index.html')
 
-# blog.html 페이지를 부르는 blog 함수
-# blog.html 페이지를 부르는 blog 함수
-def blog(request):
-    # 모든 Post를 가져와 postlist에 저장합니다
-    postlist = Post.objects.all()
-    # blog.html 페이지를 열 때, 모든 Post인 postlist도 같이 가져옵니다 
-    return render(request, 'mysite/blog.html', {'postlist':postlist})
-
-def posting(request, pk):
-    # 게시글(Post) 중 pk(primary_key)를 이용해 하나의 게시글(post)를 검색
-    post = Post.objects.get(pk=pk)
-    # posting.html 페이지를 열 때, 찾아낸 게시글(post)을 post라는 이름으로 가져옴
-    return render(request, 'mysite/posting.html', {'post':post})
-
 def new_post(request):
-    if request.method == 'POST':
-        if request.POST.get('mainphoto'):
-            new_article=Post.objects.create(
-                # postname=request.POST.get('postname'),
-                # contents=request.POST.get('contents'),
-                mainphoto= request.FILES['mainphoto'],
-            )
-        else:
-            new_article=Post.objects.create(
-                # postname=request.POST.get('postname'),
-                # contents=request.POST.get('contents'),
-                mainphoto= request.FILES['mainphoto'],
-            )
-        return redirect('/blog/food_list/')
-    return render(request, 'mysite/new_post.html')
+    try:
+        if request.method == 'POST':
+            if request.POST.get('mainphoto'):
+                new_article=Post.objects.create(
+                    # postname=request.POST.get('postname'),
+                    # contents=request.POST.get('contents'),
+                    mainphoto= request.FILES['mainphoto'],
+                )
+            else:
+                new_article=Post.objects.create(
+                    # postname=request.POST.get('postname'),
+                    # contents=request.POST.get('contents'),
+                    mainphoto= request.FILES['mainphoto'],
+                )
 
+                cursor = connection.cursor()
 
-def test(request):
-    a=request.get_full_path
-    if request.method == 'GET':
-        if request.GET.get('angry'):
-            a = request.get_full_path
-        elif request.GET.get('happy'):
-            a = request.get_full_path
-        else:
-            a = request.get_full_path
-    return render(request, 'mysite/test.html', {'a':a})
+                strSql = "SELECT * FROM mysite_post"
+                result = cursor.execute(strSql)
+                datas = cursor.fetchall()
+
+                connection.commit()
+                connection.close()
+
+                arr = []
+                for data in datas:
+                    row = {
+                        'mainphoto' : data[1]
+                    }
+                    arr.append(row)  
+
+                ptlink = arr[-1]["mainphoto"]
+                
+                files = glob.glob(f'C:/multi_project_3/Django/web_study/media/{ptlink}')
+                for f in files:
+                    title, ext = os.path.splitext(f)
+                    if ext in ['.jpg', '.png']:
+                        img = Image.open(f)
+                        img_resize = img.resize((250, 250))
+                        img_resize.save(title + ext)
+            return redirect('/recommend/')
+    except:
+        return redirect('/file_upload/')
+
+    return render(request, 'mysite/new_post.html' ,{"rec_count":rec_count, "count":count})
+
+def show_post(request):
+    #최신순으로 조회(-pk 역순 조회)
+    postlist = Post.objects.all().order_by('-pk')
+    return render(request, 'mysite/show.html', {'postlist':postlist})
+#끝
+
+#음식기록 추가코드(show_food 페이지와 연결)
+def show_food(request):
+    res = resultall.objects.all()
+    fcount = res.count()
+#끝
+#사진입력 횟수를 조회하는 코드 시작
+    sp = Post.objects.all()
+    spcount = sp.count()        
+    foodlist = resultall.objects.all().order_by('-pk')
+    return render(request, 'mysite/foodlist.html', {'foodlist':foodlist, "rec_count":rec_count, "count":count})
 
 
 
@@ -107,17 +126,20 @@ def molar(request):
         else:
             a1 = 'sad'
         
-    return render(request, 'mysite/food_list1.html')
+    return render(request, 'mysite/food_list1.html',{"rec_count":rec_count, "count":count})
 
 
 def food_list1(request):
     if request.method == 'POST':
         if request.POST.get('angry'):
             a1 = 'angry'
+            emotion = '분노한'
         elif request.POST.get('happy'):
             a1 = 'happy'
+            emotion = '기쁜'
         else:
             a1 = 'sad'
+            emotion = '슬픈'
 
     cursor = connection.cursor()
 
@@ -138,9 +160,9 @@ def food_list1(request):
         arr.append(row)  
 
     ptlink = arr[-1]["mainphoto"]
-    #'C:/multi_project_3/DL_Model/VGG16_BatchNor.h5'
-    model = load_model('C:/multi_project_3/DL_Model/VGG16_BatchNor.h5') # 모델명
-        
+    
+    model = load_model('C:/models/VGG16_BatchNor.h5') # 모델명
+    
     roi = cv2.imread('media/{}'.format(ptlink)) # 파일 경로
     #roi = cv2.imread('media/{}'.format(arr[-1].mainphoto)) # 파일 경로
     
@@ -159,6 +181,9 @@ def food_list1(request):
     # percent = Prediction[0][np.argmax(Prediction)]
 
     result = np.argmax(Prediction)#백분율이 제일 높은 값
+
+    global rec_count
+    rec_count = rec_count + 1
     
 
     html = requests.get('https://weather.naver.com/today/09680630?cpName=KMA')
@@ -168,29 +193,37 @@ def food_list1(request):
     data1 = soup.find('span', {'class':'weather'}).get_text()
     if data1 == '비':
         b = '_rain'
+        wea = "비가 오는 바깥의"
     elif data1 == '눈':
         b = '_snow'
+        wea = "눈이 오는 바깥의"
     else:
         b = ''
+        wea = data1
         
     
     now = datetime.datetime.now()
     if now.month == [3, 4, 5]:
         c = '_spring'
+        season = "봄"
     elif now.month == [6, 7, 8]:
         c = '_summer'
+        season = "여름"
     elif now.month == [9, 10, 11]:
         c = '_fall'
+        season = "가을"
     else:
         c = '_winter'
+        season = "겨울"
         
     
     final = a1+b+c
 
     
+    
     cursor2 = connection.cursor()
 
-    strSql2 = f"SELECT * FROM menu_score_all GROUP BY restaurant ORDER BY {final} DESC limit 5"
+    strSql2 = f"SELECT * from (SELECT * FROM menu_score_all  group by menu order by  {final}  DESC, rand()) res group by restaurant order by {final} DESC;"
     result2 = cursor2.execute(strSql2)
     datas2 = cursor2.fetchall()
 
@@ -216,8 +249,32 @@ def food_list1(request):
     menu5 = arr2[4]["menu"]     
     restaurant5 = arr2[4]["restaurant"]
 
+    d= []
+    e= []
+    f=[]
 
-    return render(request, 'mysite/food_list1.html', {'arr':arr[-1], 'a1':a1, 'final':final, 'menu1':menu1, 'restaurant1':restaurant1,'menu2':menu2, 'restaurant2':restaurant2,'menu3':menu3, 'restaurant3':restaurant3,'menu4':menu4, 'restaurant4':restaurant4,'menu5':menu5, 'restaurant5':restaurant5 })
+    d.append(menu1)
+    d.append(menu2)
+    d.append(menu3)
+    d.append(menu4)
+    d.append(menu5)           
+    e.append(restaurant1)
+    e.append(restaurant2)
+    e.append(restaurant3)
+    e.append(restaurant4)
+    e.append(restaurant5)
+    for i in range(1,len(d)+1):
+            i =+i
+            f.append(i)
+    folist = zip(f, d, e)
+    resultall.objects.create(
+            restaurant = e,
+            menu = d,
+            season = final,
+            emotion = a1
+        )
+
+    return render(request, 'mysite/food_list1.html', {'arr':arr[-1],"rec_count":rec_count, "count":count, 'emotion':emotion, 'wea':wea, 'season':season ,'a1':a1,'b':b,'c':c, 'd':d, 'e':e, 'folist': folist, 'final':final})
 
     
 def food_list(request):
@@ -242,7 +299,7 @@ def food_list(request):
 
         ptlink = arr[-1]["mainphoto"]
         
-        model = load_model('C:/multi_project_3/DL_Model/VGG16_BatchNor.h5') # 모델명
+        model = load_model('C:/models/VGG16_BatchNor.h5') # 모델명
         
         roi = cv2.imread('media/{}'.format(ptlink)) # 파일 경로
         #roi = cv2.imread('media/{}'.format(arr[-1].mainphoto)) # 파일 경로
@@ -259,16 +316,22 @@ def food_list(request):
         #Prediction[0]   #감정별 백분율 (화남 0, 기쁨 1, 중립 2, 슬픔3)
 
 
-        percent = Prediction[0][np.argmax(Prediction)]
+        percent = round(Prediction[0][np.argmax(Prediction)]*100,2)
 
         result = np.argmax(Prediction)#백분율이 제일 높은 값
         
+        global rec_count
+        rec_count = rec_count + 1
+
         if result == 0:
             a = 'angry'
+            emotion = "분노한"
         elif result == 1:
             a = 'happy'
+            emotion = "행복한"
         elif result == 3:
             a = 'sad'
+            emotion = "슬픈"
         else:
             return render(request, 'mysite/molar.html')
             
@@ -281,10 +344,13 @@ def food_list(request):
         data1 = soup.find('span', {'class':'weather'}).get_text()
         if data1 == '비':
             b = '_rain'
+            wea = "비가 오는 바깥의"
         elif data1 == '눈':
             b = '_snow'
+            wea = "눈이 오는 바깥의"
         else:
             b = ''
+            wea = data1
             
         
         now = datetime.datetime.now()
@@ -296,124 +362,40 @@ def food_list(request):
             season = "여름"
         elif now.month == [9, 10, 11]:
             c = '_fall'
-            seadon = "가을"
+            season = "가을"
         else:
             c = '_winter'
             season = "겨울"
         
         final = a+c+b
 
+        cursor2 = connection.cursor()
+
+        strSql2 = f" SELECT * from (SELECT * FROM menu_score_all  group by menu order by  {final}  DESC, rand()) res group by restaurant order by {final} desc;"
+        result2 = cursor2.execute(strSql2)
+        datas2 = cursor2.fetchall()
+
+        connection.commit()
+        connection.close()
+
+        arr2 = []
+        for data in datas2:
+            row2 = {
+                'menu' : data[0],
+                'restaurant' : data[1]
+            }
+            arr2.append(row2)    
         
-        conn = pymysql.connect(host='localhost',
-                       user='root',
-                       password='0610',
-                       db='new_1128',
-                       charset='utf8')
-
-        sql_column = """SELECT  COLUMN_NAME
-        FROM    INFORMATION_SCHEMA.COLUMNS
-        WHERE   TABLE_NAME = 'menu_score_all';"""
-
-
-        with conn:
-            with conn.cursor() as cur:
-                cur.execute(sql_column)
-                result_column = cur.fetchall()
-
-        conn = pymysql.connect(host='localhost',
-                       user='root',
-                       password='0610',
-                       db='new_1128',
-                       charset='utf8')
-
-        sql = "SELECT * FROM menu_score_all"
-
-        with conn:
-            with conn.cursor() as cur:
-                cur.execute(sql)
-                result = cur.fetchall()
-                df = pd.DataFrame(result, columns = result_column)
-                
-
-        # 조건에 따라 결정된 컬럼을 기준으로 내림차순 정렬
-        df_sort = df.sort_values(('happy_fall',),ascending=False)
-
-        # 내림차순 정렬된 df에서 메뉴명, 레스토랑명, 조건가중치열만 추출
-        df_three_col = pd.DataFrame(df_sort[[("menu",),("restaurant",),("happy_fall",)]])
-
-        df_three_col.columns = ["menu", "restaurant", "happy_fall"]
-
-        df_three_col.reset_index(drop=True, inplace=True)
-
-
-        # 가중치로 정렬했을때 상위 다섯개 레스토랑명 추출
-
-        restaurant_list = []
-
-
-        for restaurant_name in range(100):
-            restaurant_list.append(df_three_col.iloc[restaurant_name,1])
-
-        restaurant_list1 = []
-        for i in range(len(restaurant_list)):
-            if restaurant_list[0] != restaurant_list[i]:
-                restaurant_list1.append(restaurant_list[i])
-        restaurant_list2 = []
-        for i in range(len(restaurant_list1)):
-            if restaurant_list1[0] != restaurant_list1[i]:
-                restaurant_list2.append(restaurant_list1[i])
-        restaurant_list3 = []
-        for i in range(len(restaurant_list2)):
-            if restaurant_list2[0] != restaurant_list2[i]:
-                restaurant_list3.append(restaurant_list2[i])
-
-        restaurant_list4 = []
-        for i in range(len(restaurant_list3)):
-            if restaurant_list3[0] != restaurant_list3[i]:
-                restaurant_list4.append(restaurant_list3[i])
-
-        restaurant_5 = []
-        restaurant_5.append(restaurant_list[0])
-        restaurant_5.append(restaurant_list1[0])
-        restaurant_5.append(restaurant_list2[0])
-        restaurant_5.append(restaurant_list3[0])
-        restaurant_5.append(restaurant_list4[0])
-
-
-        # 다섯개 식당별로 데이터프레임 생성
-        # 가중치 값으로 정렬된 상태로 담김
-        restaurant_menu_df_1 = df_three_col.loc[df_three_col["restaurant"]==restaurant_5[0]]
-        restaurant_menu_df_2 = df_three_col.loc[df_three_col["restaurant"]==restaurant_5[1]]
-        restaurant_menu_df_3 = df_three_col.loc[df_three_col["restaurant"]==restaurant_5[2]]
-        restaurant_menu_df_4 = df_three_col.loc[df_three_col["restaurant"]==restaurant_5[3]]
-        restaurant_menu_df_5 = df_three_col.loc[df_three_col["restaurant"]==restaurant_5[4]]
-
-        # 각 데이터프레임에서 가장 큰 가중치 값 산출
-        restaurant_menu_df_1_large_score = restaurant_menu_df_1.iloc[0,2]
-        restaurant_menu_df_2_large_score = restaurant_menu_df_2.iloc[0,2]
-        restaurant_menu_df_3_large_score = restaurant_menu_df_3.iloc[0,2]
-        restaurant_menu_df_4_large_score = restaurant_menu_df_4.iloc[0,2]
-        restaurant_menu_df_5_large_score = restaurant_menu_df_5.iloc[0,2]
-
-        # 각 식당별로 가장 높으면서 동일한 가중치를 가진 메뉴들을 담을 덩어리 생성
-        restaurant_menu_df_1_list = list(restaurant_menu_df_1.loc[restaurant_menu_df_1["happy_fall"]==restaurant_menu_df_1_large_score]["menu"])
-        restaurant_menu_df_2_list = list(restaurant_menu_df_2.loc[restaurant_menu_df_2["happy_fall"]==restaurant_menu_df_2_large_score]["menu"])
-        restaurant_menu_df_3_list = list(restaurant_menu_df_3.loc[restaurant_menu_df_3["happy_fall"]==restaurant_menu_df_3_large_score]["menu"])
-        restaurant_menu_df_4_list = list(restaurant_menu_df_4.loc[restaurant_menu_df_4["happy_fall"]==restaurant_menu_df_4_large_score]["menu"])
-        restaurant_menu_df_5_list = list(restaurant_menu_df_5.loc[restaurant_menu_df_5["happy_fall"]==restaurant_menu_df_5_large_score]["menu"])
-
-
-        menu1 = random.choice(restaurant_menu_df_1_list)
-        menu2 = random.choice(restaurant_menu_df_2_list)
-        menu3 = random.choice(restaurant_menu_df_3_list)
-        menu4 = random.choice(restaurant_menu_df_4_list)
-        menu5 = random.choice(restaurant_menu_df_5_list)
-
-        restaurant1 = df_three_col.loc[df_three_col["menu"]==menu1]["restaurant"].values[0]
-        restaurant2 = df_three_col.loc[df_three_col["menu"]==menu2]["restaurant"].values[0]
-        restaurant3 = df_three_col.loc[df_three_col["menu"]==menu3]["restaurant"].values[0]
-        restaurant4 = df_three_col.loc[df_three_col["menu"]==menu4]["restaurant"].values[0]
-        restaurant5 = df_three_col.loc[df_three_col["menu"]==menu5]["restaurant"].values[0]
+        menu1 = arr2[0]["menu"]     
+        restaurant1 = arr2[0]["restaurant"]
+        menu2 = arr2[1]["menu"]     
+        restaurant2 = arr2[1]["restaurant"]
+        menu3 = arr2[2]["menu"]     
+        restaurant3 = arr2[2]["restaurant"]
+        menu4 = arr2[3]["menu"]     
+        restaurant4 = arr2[3]["restaurant"]
+        menu5 = arr2[4]["menu"]     
+        restaurant5 = arr2[4]["restaurant"]
 
         d= []
         e= []
@@ -433,6 +415,13 @@ def food_list(request):
                 i =+i
                 f.append(i)
         folist = zip(f, d, e)
+        resultall.objects.create(
+            restaurant = e,
+            menu = d,
+            season = final,
+            emotion = a
+        )
+
 
 
     except:
@@ -440,8 +429,7 @@ def food_list(request):
         print("Failed selecting in DB")
     
 
-    return render(request, 'mysite/food_list.html', {'arr':arr[-1],"season":season,'percent':percent,'a':a,'b':b,'c':c, 'd':d, 'e':e, 'folist': folist, 'final':final})
-
+    return render(request, 'mysite/food_list.html', {'arr':arr[-1],'emotion':emotion,"rec_count":rec_count, "count":count, "wea":wea, "season":season,'percent':percent,'a':a,'b':b,'c':c, 'd':d, 'e':e, 'folist': folist, 'final':final})
 #지도 불러오기 함수
 #고투웍
 def gotowork(request):
@@ -514,9 +502,6 @@ def hon(request):
     return render(request,'mysite/홍콩반점0410map.html')
 
 
-def agree(request):
-    return render(request,'mysite/agree.html')
 
 def map(request):
-    return render(request,'mysite/map.html')
-
+    return render(request,'mysite/map.html', {"rec_count":rec_count, "count":count})
