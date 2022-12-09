@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from mysite.models import Question, Post
+from mysite.models import Question, Post, resultall
 
 
 class QuestionAdmin(admin.ModelAdmin):
@@ -9,3 +9,4 @@ class QuestionAdmin(admin.ModelAdmin):
 
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Post)
+admin.site.register(resultall)

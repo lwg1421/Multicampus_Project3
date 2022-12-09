@@ -23,10 +23,6 @@ class Post(models.Model):
         return self.postname
 
 
-
-
-        
-
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 
@@ -162,15 +158,15 @@ class MenuScoreAll(models.Model):
     sad_winter_rain = models.FloatField(blank=True, null=True)
     sad_winter = models.FloatField(blank=True, null=True)
     sad_winter_snow = models.FloatField(blank=True, null=True)
-    angry_winter = models.IntegerField(blank=True, null=True)
-    angry_winter_snow = models.IntegerField(blank=True, null=True)
-    angry_winter_rain = models.IntegerField(blank=True, null=True)
-    angry_fall = models.IntegerField(blank=True, null=True)
-    angry_fall_rain = models.IntegerField(blank=True, null=True)
-    angry_summer = models.IntegerField(blank=True, null=True)
-    angry_summer_rain = models.IntegerField(blank=True, null=True)
-    angry_spring = models.IntegerField(blank=True, null=True)
-    angry_spring_rain = models.IntegerField(blank=True, null=True)
+    angry_winter = models.FloatField(blank=True, null=True)
+    angry_winter_snow = models.FloatField(blank=True, null=True)
+    angry_winter_rain = models.FloatField(blank=True, null=True)
+    angry_fall = models.FloatField(blank=True, null=True)
+    angry_fall_rain = models.FloatField(blank=True, null=True)
+    angry_summer = models.FloatField(blank=True, null=True)
+    angry_summer_rain = models.FloatField(blank=True, null=True)
+    angry_spring = models.FloatField(blank=True, null=True)
+    angry_spring_rain = models.FloatField(blank=True, null=True)
 
     class Meta:
         managed = False
@@ -208,3 +204,15 @@ class MysiteQuestion(models.Model):
     class Meta:
         managed = False
         db_table = 'mysite_question'
+
+
+class resultall(models.Model):
+    restaurant = models.CharField(max_length=300)
+    menu = models.CharField(max_length=300)
+    emotion = models.CharField(max_length=300, null=True, default='')
+    season = models.CharField(max_length=300, null=True, default='')
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    def __str__(self):
+        return f"({self.season},{self.emotion})"
+
+
