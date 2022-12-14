@@ -1,0 +1,39 @@
+[33m9e80992[m[33m ([m[1;36mHEAD -> [m[1;32mwonkkkn[m[33m)[m 사진업로드,머신러닝 모델 이식
+[33m020b088[m 사진업로드,머신러닝 모델 이식
+[33me8ab407[m[33m ([m[1;31morigin/wonkkkn[m[33m)[m django update
+[33m69c390d[m 지도 업데이트,매장 이미지 정보 추가
+[33mbfa231e[m xlsx_to_csv 함수 제작
+[33m5b9d38c[m 매장 정보 수집 크롤러 수정
+[33mc7163c0[m map update
+[33maa2f090[m create DB
+[33mc8adc19[m[33m ([m[1;31morigin/master[m[33m)[m Merge pull request #13 from lwg1421/citobs
+[33m97de0db[m Merge pull request #12 from lwg1421/wonkkkn
+[33m72b078a[m 앱 생성
+[33m7531e54[m 크롤러함수(완)
+[33m7b6155d[m Merge pull request #11 from lwg1421/wonkkkn
+[33m28520b0[m 크롤러 수정, 지도html파일 추가
+[33m188846e[m Merge pull request #10 from lwg1421/citobs
+[33ma0b2323[m 크롤러등록
+[33m641614d[m Merge pull request #9 from lwg1421/wonkkkn
+[33m12073d1[m crawler
+[33ma6e70ec[m Merge pull request #8 from lwg1421/channy33
+[33m8008468[m check
+[33mabb1110[m Merge pull request #7 from lwg1421/Calcious
+[33m03a7fb4[m check
+[33ma3a1448[m Merge pull request #6 from lwg1421/창훈
+[33mfded609[m test
+[33m8d6df5a[m Merge pull request #5 from lwg1421/citobs
+[33meabafc8[m check
+[33m8dd9c9c[m Merge pull request #4 from lwg1421/eunji0225
+[33mb26486c[m check
+[33mc892a77[m Merge pull request #3 from lwg1421/wonkkkn
+[33mf224c24[m create README
+[33m9726b0c[m Merge pull request #2 from lwg1421/wonkkkn
+[33m86cad99[m create file
+[33m105c4e6[m Merge pull request #1 from lwg1421/wonkkkn
+[33mc0e1175[m create folder
+[33mf26f732[m[33m ([m[1;32mmaster[m[33m)[m update README
+[33m386ab5b[m start project
+[33m61c8b0a[m create project
+[33m2a2409e[m create project
+[33m0898671[m create project
