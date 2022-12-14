@@ -1,14 +1,27 @@
+<!-- 추가 -->
+{% load static %}
+<!-- 추가끝 -->
+
 <!DOCTYPE html>
 <html>
-
 <head>
-
+    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
-    <script>
-        L_NO_TOUCH = false;
-        L_DISABLE_3D = false;
-    </script>
+        <!-- 추가 -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="{% static 'img/main_icon10.png' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/reset.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/10000hours.css' %}">
+        <script defer src="{% static 'js/10000hours.js' %}"></script>
+        <title>매장정보보기</title>
+        <!-- 추가끝 -->
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
 
     <style>
         html,
@@ -27,6 +40,22 @@
             right: 0;
             left: 0;
         }
+/* 추가 */
+        hr {
+            height: 1px;
+            background-color: black !important;
+            border-color: black !important;
+            color :black !important;
+        }
+
+        .count {
+            font-family: 'GmarketSansMedium'!important;
+            font-size: 16px !important;
+            background-color: rgb(255, 255, 255) !important;
+            color: rgb(0, 0, 0) !important;
+        }
+/* 추가끝 */
+
     </style>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -46,21 +75,80 @@
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <style>
         #map_0e89ff895a5e9612e7dba05a6a048b0c {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            left: 0.0%;
-            top: 0.0%;
+                    /* 변경 */
+                    text-align: center;
+                    position: relative;
+                    width: 70%;
+                    height: 700px;
+                    left: 0.0%;
+                    top: 0.0%;
+                    margin-left: 15%;
+                    margin-right: 15%;
+                    /* 변경끝 */
         }
     </style>
 
 </head>
 
 <body>
+            <!-- 추가 -->
+            <div>
+    
+                <div style="margin-left: 75px; margin-right: 75px; margin-top: 10px; margin-bottom: 0px; width: 90%;">
+                    <a href="{% url 'mysite:base1' %}"><img src="{% static 'img/top10.png' %}" alt="홈페이지로고" width="100%" height="200" title="홈페이지로고"></a>
+                </div>
+        
+                </div>
+                <div style="text-align : center ;margin-bottom: 0px; margin-top: 0px;">
+                <ul class="nav-container" style="text-align : center; height: 48px; margin-top: 5px; font-family: 'GmarketSansMedium'!important;">
+                    <li class="nav-item"><a href="{% url 'mysite:base1' %}"><font size="4em" color="white" >HOME</font></a></li>
+                    <li class="nav-item"><a href="{% url 'mysite:final' %}"><font size="4em" color="white">선택기록보기</font></a></li>
+                    <li class="nav-item"><a href="{% url 'mysite:map' %}"><font size="4em" color="white">매장정보보기</font></a></li>
+                    <li class="nav-item"><a href="{% url 'mysite:new_post' %}"><font size="4em" color="white">메뉴추천받기</font></a></li>
+                    <li class="nav-item"><label for ="before"><font size="4em" color="white" font-family = "GmarketSansMedium">이전페이지</font></label><input type ="button" id="before"style="display:none; visiblity:hidden ;" onclick="history_back()"></li>
+                </ul>
+            </div>
+    
+            <script>
+                function history_back() {
+                    history.back();
+                }
+              </script>
+        
+            <div style="text-align : center; margin-bottom: 80px; margin-top: 80px;">
+                <b><font size="12em" color="red">역전우동0410</font><font size="10em" color="black"> 지도보기 </font></b>
+            </div>
+        
+            <!-- 안내문 영역 -->
+            <!-- <div style="text-align : center; margin-bottom: 40px;">
+                <font size="5em" color="black"><b>지도 위 핀을 클릭하면<br><br>지점 주소, 전화번호, 운영시간 등 <br><br>다양한 정보 확인이 가능합니다</b></font>
+            </div> -->
+            <div style="text-align : center; margin-bottom: 20px;">
+                <font size="3em" color="black"><b>지도 위 핀을 클릭하면 지점 주소, 전화번호, 운영시간 등 다양한 정보 확인이 가능합니다</b></font>
+            </div>
+            <!-- 추가끝 -->
 
 
     <div class="folium-map" id="map_0e89ff895a5e9612e7dba05a6a048b0c"></div>
 
+            <!-- 추가 -->
+            <div class = "count" style="margin-top: 250px;">
+                <div style="display: inline-block; margin-left: 100px;">누적 방문자수 : {{count}}명</div>
+                <div style="display: inline-block; margin-left: 50px;">누적 추천횟수 : {{rec_count}}회</div>
+            </div>
+          
+            <br>
+            <div >
+            <hr size="3px" width="90%">
+            <section id="copyright">
+                
+                <p>
+                    ※ 본 서비스의 저작권은 멀티캠퍼스 데이터사이언스/엔지니어링 3팀 식스시그마에 있습니다.<br>
+                    수정 및 재배포, 무단 도용 시 법적인 문제가 발생할 수 있습니다.
+                </p>
+            </section>
+            </div>
+            <!-- 추가끝 -->
 </body>
 <script>
 

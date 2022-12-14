@@ -216,3 +216,29 @@ class resultall(models.Model):
         return f"({self.season},{self.emotion})"
 
 
+class fullist(models.Model):
+    emot = models.CharField(max_length=300, null=True)
+    sea = models.CharField(max_length=300, null=True)
+    first= models.CharField(max_length=300, null=True)
+    second= models.CharField(max_length=300, null=True)
+    third = models.CharField(max_length=300, null=True)
+    cr_at = models.DateTimeField(auto_now_add=True, null=True)
+    fourth = models.CharField(max_length=300, null=True)
+    fifth = models.CharField(max_length=300, null=True)
+    wea = models.CharField(max_length=300, null=True)
+    
+    def __str__(self):
+        return f"({self.emot},{self.sea})"
+
+class choice(models.Model):
+    res = models.CharField(max_length=300,null=True)
+    menu = models.CharField(max_length=300,null=True)
+    emotion = models.CharField(max_length=300,null=True)
+    cr_at = models.DateTimeField(auto_now_add=True, null =True)
+    weather = models.CharField(max_length=300,null=True)
+    season = models.CharField(max_length=300,null=True)
+
+    def __str__(self):
+            return f"({self.res})"
+
+

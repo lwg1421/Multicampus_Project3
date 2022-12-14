@@ -53,13 +53,19 @@
       </div>
       <div style="text-align : center ;margin-bottom: 0px; margin-top: 0px;">
         <ul class="nav-container" style="text-align : center;">
-          <li class="nav-item"><a href="{% url 'mysite:base1' %}">HOME</a></li>
-          <li class="nav-item"><a href="{% url 'mysite:food' %}">추천기록보기</a></li>
-          <li class="nav-item"><a href="{% url 'mysite:map' %}">매장정보보기</a></li>
-          <li class="nav-item"><a href="{% url 'mysite:new_post' %}">메뉴추천받기</a></li>
-          <li class="nav-item"><a href="{% url 'mysite:new_post' %}">이전페이지</a></li>
+          <li class="nav-item"><a href="{% url 'mysite:base1' %}"><font size="4em" color="white">HOME</font></a></li>
+          <li class="nav-item"><a href="{% url 'mysite:final' %}"><font size="4em" color="white">선택기록보기</font></a></li>
+          <li class="nav-item"><a href="{% url 'mysite:map' %}"><font size="4em" color="white">매장정보보기</font></a></li>
+          <li class="nav-item"><a href="{% url 'mysite:new_post' %}"><font size="4em" color="white">메뉴추천받기</font></a></li>
+          <li class="nav-item"><label for ="before"><font size="4em" color="white">이전페이지</font></label><input type ="button" id="before"style="display:none; visiblity:hidden ;" onclick="history_back()"></li>
         </ul>
       </div>
+
+      <script>
+        function history_back() {
+            history.back();
+        }
+      </script>
 
     <div style="text-align : center; margin-top: 150px;"><font size="10em" color="black"><b>감정을 읽을 수 없어요</b></font></div>
     <div style="text-align : center; margin-top: 80px; margin-bottom: 80px;">
