@@ -74,7 +74,7 @@
     <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <style>
-        #map_b31d6f1ed4f2756c7a1a49349ef59206 {
+        #map_7d8f9aa8e01d3059ccb60a70714ff02e {
                     /* 변경 */
                     text-align: center;
                     position: relative;
@@ -91,7 +91,6 @@
 </head>
 
 <body>
-
             <!-- 추가 -->
             <div>
     
@@ -117,7 +116,7 @@
               </script>
         
             <div style="text-align : center; margin-bottom: 80px; margin-top: 80px;">
-                <b><font size="12em" color="red">분식9단</font><font size="10em" color="black"> 지도보기 </font></b>
+                <b><font size="12em" color="red">백's 비빔밥</font><font size="10em" color="black"> 지도보기 </font></b>
             </div>
         
             <!-- 안내문 영역 -->
@@ -130,7 +129,7 @@
             <!-- 추가끝 -->
 
 
-    <div class="folium-map" id="map_b31d6f1ed4f2756c7a1a49349ef59206"></div>
+    <div class="folium-map" id="map_7d8f9aa8e01d3059ccb60a70714ff02e"></div>
 
             <!-- 추가 -->
             <div class = "count" style="margin-top: 250px;">
@@ -154,8 +153,8 @@
 <script>
 
 
-    var map_b31d6f1ed4f2756c7a1a49349ef59206 = L.map(
-        "map_b31d6f1ed4f2756c7a1a49349ef59206",
+    var map_7d8f9aa8e01d3059ccb60a70714ff02e = L.map(
+        "map_7d8f9aa8e01d3059ccb60a70714ff02e",
         {
             center: [37.559819, 126.963895],
             crs: L.CRS.EPSG3857,
@@ -169,42 +168,42 @@
 
 
 
-    var tile_layer_d58ba76774110469abd088e7f58aa16a = L.tileLayer(
+    var tile_layer_b1f4c3921e242985040312875bad50d7 = L.tileLayer(
         "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         { "attribution": "Data by \u0026copy; \u003ca href=\"http://openstreetmap.org\"\u003eOpenStreetMap\u003c/a\u003e, under \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eODbL\u003c/a\u003e.", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false }
-    ).addTo(map_b31d6f1ed4f2756c7a1a49349ef59206);
+    ).addTo(map_7d8f9aa8e01d3059ccb60a70714ff02e);
 
 
-    var marker_595c7bc3fbb0471ca05c5d6dbc973e30 = L.marker(
-        [37.6080757, 127.0288683],
+    var marker_6eeba8b031eee6ba123c2d56d23bd0ed = L.marker(
+        [37.4860725, 126.9826102],
         {}
-    ).addTo(map_b31d6f1ed4f2756c7a1a49349ef59206);
+    ).addTo(map_7d8f9aa8e01d3059ccb60a70714ff02e);
 
 
-    var icon_24171d20fef0a033f8a370fc7e83b31e = L.AwesomeMarkers.icon(
+    var icon_25aa2cc03dd5cb8890369314a402763a = L.AwesomeMarkers.icon(
         { "extraClasses": "fa-rotate-0", "icon": "star", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon" }
     );
-    marker_595c7bc3fbb0471ca05c5d6dbc973e30.setIcon(icon_24171d20fef0a033f8a370fc7e83b31e);
+    marker_6eeba8b031eee6ba123c2d56d23bd0ed.setIcon(icon_25aa2cc03dd5cb8890369314a402763a);
 
 
-    var popup_ab6bab4d2a2b2772734be1e73b4e2299 = L.popup({ "maxHeight": 1000, "maxWidth": 1500, "minHeight": 700, "minWidth": 400, "src": "0.0" });
-
-
-
-    var i_frame_15c5ed6f57a2d798cb27ff990e7550d6 = $(`<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;charset=utf-8;base64,CiAgICA8aDI+67aE7IudOeuLqCDtmITrjIDrsLHtmZTsoJAg66+47JWE7KCQPGJyPjxoND48Yj7soITtmZTrsojtmLg8L2I+IDog66+465Ox66GdPGJyPjxicj48Yj7sp4DsoJDso7zshow8L2I+IDog7ISc7Jq47Yq567OE7IucIOyEseu2geq1rCDrj5nshozrrLjroZwgMzE1IO2YhOuMgOuwse2ZlOygkOuvuOyVhOygkDxicj48YnI+PGI+7JiB7JeF7Iuc6rCEPC9iPiA6IDEwOjMwIH4gMjA6MDAgPGJyPjxicj48aW1nIHNyYyA9ICcwLjAnd2lkdGg9JzMwMCcgaGVpZ2h0PScyMDAnPg==" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;"></iframe></div></div>`)[0];
-    popup_ab6bab4d2a2b2772734be1e73b4e2299.setContent(i_frame_15c5ed6f57a2d798cb27ff990e7550d6);
+    var popup_c9612d5d028acb3e37ca472300778aa7 = L.popup({ "maxHeight": 1000, "maxWidth": 1500, "minHeight": 700, "minWidth": 400, "src": "https://theborndb.theborn.co.kr/wp-content/uploads/Isu-Station.jpg" });
 
 
 
-    marker_595c7bc3fbb0471ca05c5d6dbc973e30.bindPopup(popup_ab6bab4d2a2b2772734be1e73b4e2299)
+    var i_frame_b35e29a51711c4b92660cc74bceb2bba = $(`<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;charset=utf-8;base64,CiAgICA8aDI+67CxJ3Mg67mE67mU67ClIElzdSBTdGF0aW9uPGJyPjxoND48Yj7soITtmZTrsojtmLg8L2I+IDogMDItNTMyLTU0OTY8YnI+PGJyPjxiPuyngOygkOyjvOyGjDwvYj4gOiDshJzsmrgg7ISc7LSI6rWsIOuwqeuwsOuPmSAzMDAxLTHrsojsp4Ag65SU7Jik7IqI7Y6Y66as7JuAMuywqCAxMDPtmLg8YnI+PGJyPjxiPuyYgeyXheyLnOqwhDwvYj4gOiBuYW4gPGJyPjxicj48aW1nIHNyYyA9ICdodHRwczovL3RoZWJvcm5kYi50aGVib3JuLmNvLmtyL3dwLWNvbnRlbnQvdXBsb2Fkcy9Jc3UtU3RhdGlvbi5qcGcnd2lkdGg9JzMwMCcgaGVpZ2h0PScyMDAnPg==" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;"></iframe></div></div>`)[0];
+    popup_c9612d5d028acb3e37ca472300778aa7.setContent(i_frame_b35e29a51711c4b92660cc74bceb2bba);
+
+
+
+    marker_6eeba8b031eee6ba123c2d56d23bd0ed.bindPopup(popup_c9612d5d028acb3e37ca472300778aa7)
         ;
 
 
 
 
-    marker_595c7bc3fbb0471ca05c5d6dbc973e30.bindTooltip(
+    marker_6eeba8b031eee6ba123c2d56d23bd0ed.bindTooltip(
         `<div>
-                     현대백화점 미아점
+                     Isu Station
                  </div>`,
         { "sticky": true }
     );

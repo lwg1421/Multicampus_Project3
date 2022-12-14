@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from mysite.models import Question, Post, resultall
+from mysite.models import Question, Post, resultall, fullist, choice
 from django.utils import timezone
 from django.db import connection
 from django.urls import reverse
@@ -36,8 +36,8 @@ def base1(request):
     count = count + 1
     return render(request, 'mysite/base1.html', {"rec_count":rec_count, "count":count})
 
-def blog1(request):
-    return render(request, 'mysite/blog1.html')
+# def blog1(request):
+#     return render(request, 'mysite/blog1.html')
 
 def weather(request):
     html = requests.get('https://weather.naver.com/today/09680630?cpName=KMA')
@@ -430,78 +430,126 @@ def food_list(request):
     
 
     return render(request, 'mysite/food_list.html', {'arr':arr[-1],'emotion':emotion,"rec_count":rec_count, "count":count, "wea":wea, "season":season,'percent':percent,'a':a,'b':b,'c':c, 'd':d, 'e':e, 'folist': folist, 'final':final})
+
+
 #지도 불러오기 함수
 #고투웍
 def gotowork(request):
-    return render(request,'mysite/고투웍map.html')
+    return render(request,'mysite/고투웍map.html',{"rec_count":rec_count, "count":count})
 #구내식당
 def gunae(request):
-    return render(request,'mysite/구내식당map.html')
+    return render(request,'mysite/구내식당map.html',{"rec_count":rec_count, "count":count})
 #롤링파스타
 def rol(request):
-    return render(request,'mysite/롤링파스타map.html')
+    return render(request,'mysite/롤링파스타map.html',{"rec_count":rec_count, "count":count})
 #돌배기집
 def dol(request):
-    return render(request,'mysite/돌배기집map.html')
+    return render(request,'mysite/돌배기집map.html',{"rec_count":rec_count, "count":count})
 #리춘식당
 def lee(request):
-    return render(request,'mysite/리춘시장map.html')
+    return render(request,'mysite/리춘시장map.html',{"rec_count":rec_count, "count":count})
 #막이오름
 def mak(request):
-    return render(request,'mysite/막이오름map.html')
+    return render(request,'mysite/막이오름map.html',{"rec_count":rec_count, "count":count})
 #미정국수
 def mij(request):
-    return render(request,'mysite/미정국수map.html')
+    return render(request,'mysite/미정국수0410map.html',{"rec_count":rec_count, "count":count})
 #백스비빔밥
 def bac1(request):
-    return render(request,'mysite/백S비빔밥map.html')
+    return render(request,'mysite/백S비빔밥map.html',{"rec_count":rec_count, "count":count})
 #백스비어
 def bac2(request):
-    return render(request,'mysite/백스비어map.html')
+    return render(request,'mysite/백스비어map.html',{"rec_count":rec_count, "count":count})
 #백철판
 def bac3(request):
-    return render(request,'mysite/백철판0410map.html')
+    return render(request,'mysite/백철판0410map.html',{"rec_count":rec_count, "count":count})
 #본가
 def bon(request):
-    return render(request,'mysite/본가map.html')
+    return render(request,'mysite/본가map.html',{"rec_count":rec_count, "count":count})
 #분식9단
 def bun(request):
-    return render(request,'mysite/분식9단map.html')
+    return render(request,'mysite/분식9단map.html',{"rec_count":rec_count, "count":count})
 #빽다방
 def bac4(request):
-    return render(request,'mysite/빽다방map.html')
+    return render(request,'mysite/빽다방map.html',{"rec_count":rec_count, "count":count})
 #빽보이 피자
 def bac5(request):
-    return render(request,'mysite/빽보이피자map.html')
+    return render(request,'mysite/빽보이피자map.html',{"rec_count":rec_count, "count":count})
 #새마을 식당
 def sae(request):
-    return render(request,'mysite/새마을식당map.html')
+    return render(request,'mysite/새마을식당map.html',{"rec_count":rec_count, "count":count})
 #성성식당
 def sun(request):
-    return render(request,'mysite/성성식당map.html')
+    return render(request,'mysite/성성식당map.html',{"rec_count":rec_count, "count":count})
 #역전우동
 def yuk(request):
-    return render(request,'mysite/역전우동0410map.html')
+    return render(request,'mysite/역전우동0410map.html',{"rec_count":rec_count, "count":count})
 #연돈볼카츠
 def yeo(request):
-    return render(request,'mysite/연돈볼카츠map.html')
+    return render(request,'mysite/연돈볼카츠map.html',{"rec_count":rec_count, "count":count})
 #원조쌈밥집
 def one(request):
-    return render(request,'mysite/원조쌈밥집map.html')
+    return render(request,'mysite/원조쌈밥집map.html',{"rec_count":rec_count, "count":count})
 #인생설렁탕
 def ins(request):
-    return render(request,'mysite/인생설렁탕map.html')
+    return render(request,'mysite/인생설렁탕map.html',{"rec_count":rec_count, "count":count})
 #제순식당
 def jes(request):
-    return render(request,'mysite/제순식당map.html')
+    return render(request,'mysite/제순식당map.html',{"rec_count":rec_count, "count":count})
 #한신포차
 def han(request):
-    return render(request,'mysite/한신포차map.html')
+    return render(request,'mysite/한신포차map.html',{"rec_count":rec_count, "count":count})
 #홍콩반점
 def hon(request):
-    return render(request,'mysite/홍콩반점0410map.html')
+    return render(request,'mysite/홍콩반점0410map.html',{"rec_count":rec_count, "count":count})
 
 
 
 def map(request):
     return render(request,'mysite/map.html', {"rec_count":rec_count, "count":count})
+
+
+def fchoice(request):
+    fd = fullist.objects.all()
+    # 전체 메뉴 조회
+    # global count
+    # count = count + 1
+    f3 = []
+    f1 = request.GET['choice']
+    f3.append(f1.split(','))
+    
+    df1 =pd.DataFrame(list(f3))
+    df1.reset_index
+    df1 = df1.rename(columns={0:"음식명",1:"음식점",2:"감정상태", 3:"날씨",4:"계절"})
+
+    df1.loc[df1["음식점"]=="Back다방","음식점"] = "빽다방"
+    df1.loc[df1["음식점"]=="돌배기","음식점"] = "돌배기집"
+    df1.loc[df1["음식점"]=="백종원의 元祖쌈밥집","음식점"] = "원조쌈밥집"
+    df1.loc[df1["음식점"]=="백철판","음식점"] = "백철판0410"
+    df1.loc[df1["음식점"]=="역전우동","음식점"] = "역전우동0410"
+    df1.loc[df1["음식점"]=="홍콩반점","음식점"] = "홍콩반점0410"
+    df1.loc[df1["음식점"]=="빽보이","음식점"] = "빽보이피자"
+
+    choice.objects.create(
+        menu = str(df1["음식명"].values).replace("['","").replace("']",""),
+        res = str(df1["음식점"].values).replace("['","").replace("']",""),
+        emotion = str(df1["감정상태"].values).replace("['","").replace("']",""),
+        weather = str(df1["날씨"].values).replace("['","").replace("']",""),
+        season = str(df1["계절"].values).replace("['","").replace("']","")  
+    )
+ 
+    foodlist = resultall.objects.all()        
+    # print(type(f1))
+    # print(type(f3))
+    # print(df1.values)
+    f2 = choice.objects.all().order_by('-pk')
+    choice_res = str(df1["음식점"].values).replace("['","").replace("']","")
+  
+      
+    return render(request, 'mysite/{}map.html'.format(choice_res),{'fd':fd,'f1':f1,'f2':f2 ,'count':count, 'foodlist':foodlist ,"rec_count":rec_count })
+
+
+def foodview(request):
+    f2 = choice.objects.all().order_by('-pk')
+    # mere = RestaurantMenu.objects.all().order_by('-pk')
+    return render(request, 'mysite/choice.html',{'f2':f2})

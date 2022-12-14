@@ -28,13 +28,19 @@
   </div>
   <div style="text-align : center ;margin-bottom: 0px; margin-top: 0px;">
     <ul class="nav-container" style="text-align : center;">
-      <li class="nav-item"><a href="{% url 'mysite:base1' %}">HOME</a></li>
-      <li class="nav-item"><a href="{% url 'mysite:food' %}">추천기록보기</a></li>
-      <li class="nav-item"><a href="{% url 'mysite:map' %}">매장정보보기</a></li>
-      <li class="nav-item"><a href="{% url 'mysite:new_post' %}">메뉴추천받기</a></li>
-      <li class="nav-item"><a href="{% url 'mysite:new_post' %}">이전페이지</a></li>
+      <li class="nav-item"><a href="{% url 'mysite:base1' %}"><font size="4em" color="white">HOME</font></a></li>
+      <li class="nav-item"><a href="{% url 'mysite:final' %}"><font size="4em" color="white">선택기록보기</font></a></li>
+      <li class="nav-item"><a href="{% url 'mysite:map' %}"><font size="4em" color="white">매장정보보기</font></a></li>
+      <li class="nav-item"><a href="{% url 'mysite:new_post' %}"><font size="4em" color="white">메뉴추천받기</font></a></li>
+      <li class="nav-item"><label for ="before"><font size="4em" color="white">이전페이지</font></label><input type ="button" id="before"style="display:none; visiblity:hidden ;" onclick="history_back()"></li>
     </ul>
   </div>
+
+  <script>
+    function history_back() {
+        history.back();
+    }
+  </script>
 
   <div style="width: 100%; text-align : center; margin-top: 100px;">
     <div style="display: inline-block;">
@@ -75,7 +81,7 @@
         </tr>
         <tr>
           <td>7</td>
-          <td>미정국수</td>
+          <td>미정국수0410</td>
           <td><a href="{% url 'mysite:mij' %}"> 바로가기</a></td>
         </tr>
         <tr>
@@ -85,7 +91,7 @@
         </tr>
         <tr>
           <td>9</td>
-          <td>백스비어</td>
+          <td>백's비어</td>
           <td><a href="{% url 'mysite:bac2' %}"> 바로가기</a></td>
         </tr>
         <tr>
@@ -125,12 +131,12 @@
         </tr>
         <tr>
           <td>16</td>
-          <td>역전우동</td>
+          <td>역전우동0410</td>
           <td><a href="{% url 'mysite:yuk' %}"> 바로가기</a></td>
         </tr>
         <tr>
           <td>17</td>
-          <td>연돈불카츠</td>
+          <td>연돈볼카츠</td>
           <td><a href="{% url 'mysite:yeo' %}"> 바로가기</a></td>
         </tr>
         <tr>
@@ -155,7 +161,7 @@
         </tr>
         <tr>
           <td>22</td>
-          <td>홍콩반점</td>
+          <td>홍콩반점0410</td>
           <td><a href="{% url 'mysite:hon' %}"> 바로가기</a></td>
         </tr>
 
