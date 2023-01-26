@@ -217,7 +217,7 @@ def food_list1(request):
         season = "겨울"
         
     
-    final = a1+b+c
+    final = a1+c+b
 
     
     
